@@ -1,0 +1,3 @@
+[submodule "notification_with_pool"]
+	path = notification_with_pool
+	url = https://github.com/maojiu-bb/notification_with_pool.git
