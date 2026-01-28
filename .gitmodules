@@ -31,3 +31,6 @@
 [submodule "card_stack_swiper"]
 	path = card_stack_swiper
 	url = https://github.com/maojiu-bb/card_stack_swiper.git
+[submodule "waveform"]
+	path = waveform
+	url = https://github.com/maojiu-bb/waveform.git
