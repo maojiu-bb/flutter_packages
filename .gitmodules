@@ -4,3 +4,6 @@
 [submodule "tiktok_app_events_ios"]
 	path = tiktok_app_events_ios
 	url = https://github.com/maojiu-bb/tiktok_app_events_ios.git
+[submodule "flutter_native_alert_kit"]
+	path = flutter_native_alert_kit
+	url = https://github.com/maojiu-bb/flutter_native_alert_kit.git
