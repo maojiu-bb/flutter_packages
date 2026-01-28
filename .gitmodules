@@ -16,3 +16,6 @@
 [submodule "flutter_permission_kit"]
 	path = flutter_permission_kit
 	url = https://github.com/maojiu-bb/flutter_permission_kit.git
+[submodule "mj_video_player"]
+	path = mj_video_player
+	url = https://github.com/maojiu-bb/mj_video_player.git
