@@ -1,3 +1,6 @@
 [submodule "notification_with_pool"]
 	path = notification_with_pool
 	url = https://github.com/maojiu-bb/notification_with_pool.git
+[submodule "tiktok_app_events_ios"]
+	path = tiktok_app_events_ios
+	url = https://github.com/maojiu-bb/tiktok_app_events_ios.git
