@@ -28,3 +28,6 @@
 [submodule "awesome_notifications"]
 	path = awesome_notifications
 	url = https://github.com/maojiu-bb/awesome_notifications.git
+[submodule "card_stack_swiper"]
+	path = card_stack_swiper
+	url = https://github.com/maojiu-bb/card_stack_swiper.git
