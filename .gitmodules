@@ -10,3 +10,6 @@
 [submodule "floating_window_android"]
 	path = floating_window_android
 	url = https://github.com/maojiu-bb/floating_window_android.git
+[submodule "biometric_authorization"]
+	path = biometric_authorization
+	url = https://github.com/maojiu-bb/biometric_authorization.git
