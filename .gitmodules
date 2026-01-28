@@ -25,3 +25,6 @@
 [submodule "flutter_workmanager"]
 	path = flutter_workmanager
 	url = https://github.com/maojiu-bb/flutter_workmanager.git
+[submodule "awesome_notifications"]
+	path = awesome_notifications
+	url = https://github.com/maojiu-bb/awesome_notifications.git
