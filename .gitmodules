@@ -13,3 +13,6 @@
 [submodule "biometric_authorization"]
 	path = biometric_authorization
 	url = https://github.com/maojiu-bb/biometric_authorization.git
+[submodule "flutter_permission_kit"]
+	path = flutter_permission_kit
+	url = https://github.com/maojiu-bb/flutter_permission_kit.git
