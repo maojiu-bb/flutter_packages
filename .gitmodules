@@ -19,3 +19,6 @@
 [submodule "mj_video_player"]
 	path = mj_video_player
 	url = https://github.com/maojiu-bb/mj_video_player.git
+[submodule "flutter_declarative_syntax"]
+	path = flutter_declarative_syntax
+	url = https://github.com/maojiu-bb/flutter_declarative_syntax.git
