@@ -1,0 +1,14 @@
+//
+//  MethodName.swift
+//  flutter_native_ui_kit
+//
+//  Created by 钟钰 on 2026/1/31.
+//
+
+import Foundation
+
+class MethodName {
+    
+    static let NATIVE_ALERT: String = "NATIVE_ALERT"
+    
+}
