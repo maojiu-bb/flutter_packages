@@ -11,4 +11,6 @@ class MethodName {
     
     static let NATIVE_ALERT: String = "NATIVE_ALERT"
     
+    static let NATIVE_ACTION_SHEET: String = "NATIVE_ACTION_SHEET"
+    
 }

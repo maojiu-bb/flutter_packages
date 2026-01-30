@@ -8,6 +8,7 @@ public class FlutterNativeUiKitPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
         
         NativeAlertView.register(with: registrar)
+        NativeActionSheetView.register(with: registrar)
     }
     
     

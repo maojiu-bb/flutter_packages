@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_native_ui_kit/flutter_native_ui_kit.dart';
+import 'package:flutter_native_ui_kit/widgets/native_action_sheet.dart';
 import 'package:flutter_native_ui_kit/widgets/native_alert.dart';
 
 void main() {
@@ -74,6 +75,26 @@ class _MyAppState extends State<MyApp> {
                 );
               },
               child: Text("Native Alert"),
+            ),
+            GestureDetector(
+              onTap: () {
+                NativeActionSheet.show(
+                  title: "Native Action Sheet",
+                  cells: [
+                    ActionSheetCell(label: "Option 1", key: "option1"),
+                    ActionSheetCell(
+                      label: "Option 2",
+                      key: "option2",
+                      isDestructive: true,
+                    ),
+                    ActionSheetCell(label: "Option 3", key: "option3"),
+                  ],
+                  onResult: (ActionSheetCell? cell) {
+                    print("result: ${cell?.key}");
+                  },
+                );
+              },
+              child: Text("Native Action Sheet"),
             ),
           ],
         ),
