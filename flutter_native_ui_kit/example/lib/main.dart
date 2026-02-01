@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-import 'package:flutter_native_ui_kit/flutter_native_ui_kit.dart';
-import 'package:flutter_native_ui_kit/widgets/native_action_sheet.dart';
-import 'package:flutter_native_ui_kit/widgets/native_alert.dart';
+import 'package:flutter_native_ui_kit/common/sf_symbol.dart';
+import 'package:flutter_native_ui_kit/common/sf_symbol_data.dart';
+import 'package:flutter_native_ui_kit/widgets/native_tab_bar.dart';
+import 'package:flutter_native_ui_kit_example/pages/home_page.dart';
+import 'package:flutter_native_ui_kit_example/pages/setting_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,83 +17,46 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _flutterNativeUiKitPlugin = FlutterNativeUiKit();
+  int _currentIndex = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion = await _flutterNativeUiKitPlugin.getPlatformVersion() ??
-          'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
+  final List<Widget> _pages = const [
+    HomePage(),
+    SettingPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Column(
+        backgroundColor: Colors.black,
+        body: Stack(
           children: [
-            Center(
-              child: Text('Running on: $_platformVersion\n'),
+            IndexedStack(
+              index: _currentIndex,
+              children: _pages,
             ),
-            GestureDetector(
-              onTap: () {
-                NativeAlert.show(
-                  title: "NativeAlert",
-                  message: "This is a native alert",
-                  cancelText: "No",
-                  confirmText: "Delete",
-                  isDestructive: true,
-                  onResult: (AlertResult result) {
-                    print("result: $result");
-                  },
-                );
-              },
-              child: Text("Native Alert"),
-            ),
-            GestureDetector(
-              onTap: () {
-                NativeActionSheet.show(
-                  title: "Native Action Sheet",
-                  cells: [
-                    ActionSheetCell(label: "Option 1", key: "option1"),
-                    ActionSheetCell(
-                      label: "Option 2",
-                      key: "option2",
-                      isDestructive: true,
-                    ),
-                    ActionSheetCell(label: "Option 3", key: "option3"),
-                  ],
-                  onResult: (ActionSheetCell? cell) {
-                    print("result: ${cell?.key}");
-                  },
-                );
-              },
-              child: Text("Native Action Sheet"),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: NativeTabBar(
+                activeColor: Colors.pink,
+                items: [
+                  NativeTabBarItem(
+                    label: "Home",
+                    symbol: SfSymbol(symbol: SfSymbolData.house),
+                  ),
+                  NativeTabBarItem(
+                    label: "Settings",
+                    symbol: SfSymbol(symbol: SfSymbolData.gearshape),
+                  ),
+                ],
+                onTabSelected: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+              ),
             ),
           ],
         ),

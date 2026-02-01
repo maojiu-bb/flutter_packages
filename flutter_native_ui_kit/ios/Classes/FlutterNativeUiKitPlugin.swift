@@ -9,6 +9,9 @@ public class FlutterNativeUiKitPlugin: NSObject, FlutterPlugin {
         
         NativeAlertView.register(with: registrar)
         NativeActionSheetView.register(with: registrar)
+        
+        let nativeTabBarFactory = NativeTabBarViewFactory(messenger: registrar.messenger())
+        registrar.register(nativeTabBarFactory, withId: ViewType.NATIVE_TAB_BAR)
     }
     
     

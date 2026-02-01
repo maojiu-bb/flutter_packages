@@ -13,4 +13,7 @@ class MethodName {
     
     static let NATIVE_ACTION_SHEET: String = "NATIVE_ACTION_SHEET"
     
+    static let NATIVE_TAB_BAR: String = "NATIVE_TAB_BAR"
+
 }
+
