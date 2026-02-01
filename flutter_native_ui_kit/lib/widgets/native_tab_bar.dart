@@ -25,7 +25,7 @@ class NativeTabBarItem {
   }
 }
 
-class NativeTabBar extends StatelessWidget {
+class NativeTabBar extends StatefulWidget {
   final List<NativeTabBarItem> items;
   final Color? activeColor;
   final Color? inactiveColor;
@@ -41,6 +41,11 @@ class NativeTabBar extends StatelessWidget {
     required this.onTabSelected,
   }) : assert(items.isNotEmpty, 'items cannot be empty');
 
+  @override
+  State<NativeTabBar> createState() => _NativeTabBarState();
+}
+
+class _NativeTabBarState extends State<NativeTabBar> {
   void _onPlatformViewCreated(int id) {
     final channel =
         MethodChannel(ChannelName.of(MethodName.NATIVE_TAB_BAR.withId(id)));
@@ -48,7 +53,7 @@ class NativeTabBar extends StatelessWidget {
       switch (call.method) {
         case MethodName.NATIVE_TAB_BAR:
           final index = call.arguments as int;
-          onTabSelected.call(index);
+          widget.onTabSelected.call(index);
           break;
 
         default:
@@ -70,10 +75,10 @@ class NativeTabBar extends StatelessWidget {
       child: UiKitView(
         viewType: ViewType.NATIVE_TAB_BAR,
         creationParams: {
-          "items": items.map((item) => item.toJson()).toList(),
-          "activeColor": activeColor?.toARGB32(),
-          "inactiveColor": inactiveColor?.toARGB32(),
-          "selectedIndex": selectedIndex,
+          "items": widget.items.map((item) => item.toJson()).toList(),
+          "activeColor": widget.activeColor?.toARGB32(),
+          "inactiveColor": widget.inactiveColor?.toARGB32(),
+          "selectedIndex": widget.selectedIndex,
         },
         creationParamsCodec: const StandardMessageCodec(),
         onPlatformViewCreated: _onPlatformViewCreated,

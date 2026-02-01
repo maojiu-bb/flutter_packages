@@ -12,6 +12,9 @@ public class FlutterNativeUiKitPlugin: NSObject, FlutterPlugin {
         
         let nativeTabBarFactory = NativeTabBarViewFactory(messenger: registrar.messenger())
         registrar.register(nativeTabBarFactory, withId: ViewType.NATIVE_TAB_BAR)
+
+        let nativeAppBarFactory = NativeAppBarFactory(messenger: registrar.messenger())
+        registrar.register(nativeAppBarFactory, withId: ViewType.NATIVE_APP_BAR)
     }
     
     

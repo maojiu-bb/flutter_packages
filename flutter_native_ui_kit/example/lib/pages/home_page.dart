@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_ui_kit/widgets/native_action_sheet.dart';
 import 'package:flutter_native_ui_kit/widgets/native_alert.dart';
+import 'package:flutter_native_ui_kit_example/pages/detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,6 +58,13 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("Native Action Sheet",
                   style: TextStyle(color: Colors.white)),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailPage()));
+              },
+              child: Text("Detail", style: TextStyle(color: Colors.white)),
             ),
           ],
         ),

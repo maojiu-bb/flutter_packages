@@ -11,4 +11,6 @@ class ViewType {
     
     static let NATIVE_TAB_BAR: String = "NATIVE_TAB_BAR_VIEW"
     
+    static let NATIVE_APP_BAR: String = "NATIVE_APP_BAR_VIEW"
+    
 }
