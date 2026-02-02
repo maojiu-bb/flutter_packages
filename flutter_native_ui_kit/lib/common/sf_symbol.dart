@@ -14,7 +14,7 @@ class SfSymbol {
   Map<String, dynamic> toJson() {
     return {
       "symbol": symbol.name,
-      "color": color?.toARGB32(),
+      "color": color?.value,
     };
   }
 }
