@@ -68,7 +68,7 @@ class _NativeAppBarState extends State<NativeAppBar> {
         },
         creationParams: {
           "title": widget.title,
-          "titleColor": widget.titleColor?.toARGB32(),
+          "titleColor": widget.titleColor?.value,
           "leading": widget.leading?.toJson(),
           "actions": widget.actions?.map((action) => action.toJson()).toList(),
         },
