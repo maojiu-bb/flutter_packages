@@ -76,8 +76,8 @@ class _NativeTabBarState extends State<NativeTabBar> {
         viewType: ViewType.NATIVE_TAB_BAR,
         creationParams: {
           "items": widget.items.map((item) => item.toJson()).toList(),
-          "activeColor": widget.activeColor?.toARGB32(),
-          "inactiveColor": widget.inactiveColor?.toARGB32(),
+          "activeColor": widget.activeColor?.value,
+          "inactiveColor": widget.inactiveColor?.value,
           "selectedIndex": widget.selectedIndex,
         },
         creationParamsCodec: const StandardMessageCodec(),
