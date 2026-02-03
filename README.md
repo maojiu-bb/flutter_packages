@@ -34,3 +34,5 @@ and long-term maintenance.
 | [tencent_cos](./tencent_cos) | A Flutter package for Tencent Cloud Object Storage (COS) with easy-to-use upload, download, and delete functionality | Android, iOS | Original |
 | [tiktok_app_events_ios](./tiktok_app_events_ios) | A Flutter plugin for integrating TikTok's App Events SDK to track and report user events to TikTok's advertising platform | iOS | Original |
 | [waveform](./waveform) | Build highly customizable & beautiful animated waveforms in your Flutter app | All | Fork |
+| [flutter_native_ui_kit](./flutter_native_ui_kit) | A Flutter plugin for creating native UI components with customizable parameters | iOS | Original |
+| [media_carousel_wrapper](./media_carousel_wrapper) | A Flutter package for creating media carousels that support both images and videos with smooth animations, caching, and customizable indicators | All | Original |
