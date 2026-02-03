@@ -52,7 +52,7 @@ class _MediaCarouselIndicatorState extends State<MediaCarouselIndicator> {
     final mediaList = controller.mediaList;
     final currentIndex = controller.currentIndex;
 
-    if (mediaList.length <= 1) return const SizedBox.shrink();
+    if (mediaList.length <= 0) return const SizedBox.shrink();
 
     return SizedBox(
       height: widget.height,
