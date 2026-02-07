@@ -12,6 +12,7 @@ class MediaCarouselWrapper extends StatefulWidget {
   final double height;
   final Gradient gradient;
   final Color? loadingColor;
+  final BorderRadius borderRadius;
 
   const MediaCarouselWrapper({
     super.key,
@@ -27,6 +28,7 @@ class MediaCarouselWrapper extends StatefulWidget {
       stops: [0.8, 1.0],
     ),
     this.loadingColor,
+    this.borderRadius = const BorderRadius.all(Radius.circular(16)),
   });
 
   @override
@@ -46,10 +48,33 @@ class _MediaCarouselWrapperState extends State<MediaCarouselWrapper> {
   void initState() {
     super.initState();
     controller.addListener(_onControllerChanged);
+    pageController.addListener(_onPageControllerChanged);
   }
 
   void _onControllerChanged() {
     if (mounted) setState(() {});
+  }
+
+  void _onPageControllerChanged() {
+    if (pageController.page != null && pageController.page! % 1 == 0) {
+      final index = pageController.page!.round();
+      _ensureVideoPlaying(index);
+    }
+  }
+
+  void _ensureVideoPlaying(int index) {
+    if (index < 0 || index >= mediaList.length) return;
+
+    final item = mediaList[index];
+    if (item.mediaType == MediaType.video) {
+      final controllers = videoPlayerMap[item.mediaId];
+      if (controllers != null) {
+        final videoPlayerController = controllers.$1;
+        if (!videoPlayerController.value.isPlaying) {
+          videoPlayerController.play();
+        }
+      }
+    }
   }
 
   Future<void> initAndPlayVideo(String mediaId, String mediaUrl) async {
@@ -76,6 +101,7 @@ class _MediaCarouselWrapperState extends State<MediaCarouselWrapper> {
   @override
   void dispose() {
     controller.removeListener(_onControllerChanged);
+    pageController.removeListener(_onPageControllerChanged);
     videoPlayerMap.forEach((key, value) {
       value.$1.dispose();
       value.$2.dispose();
@@ -87,7 +113,9 @@ class _MediaCarouselWrapperState extends State<MediaCarouselWrapper> {
   Widget build(BuildContext context) {
     if (mediaList.isEmpty) return const SizedBox.shrink();
 
-    return Stack(
+    return ClipRRect(
+      borderRadius: widget.borderRadius,
+      child: Stack(
       children: [
         SizedBox(
           width: double.infinity,
@@ -96,6 +124,7 @@ class _MediaCarouselWrapperState extends State<MediaCarouselWrapper> {
             controller: pageController,
             onPageChanged: (index) {
               controller.setCurrentIndex(index);
+              _ensureVideoPlaying(index);
             },
             itemBuilder: (BuildContext context, int index) {
               final item = mediaList[index];
@@ -163,6 +192,7 @@ class _MediaCarouselWrapperState extends State<MediaCarouselWrapper> {
           ),
         ),
       ],
+      ),
     );
   }
 }
