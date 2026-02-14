@@ -1,0 +1,22 @@
+PODS:
+  - caid_info_collection (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - caid_info_collection (from `.symlinks/plugins/caid_info_collection/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  caid_info_collection:
+    :path: ".symlinks/plugins/caid_info_collection/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  caid_info_collection: 139b72eb7a3496956b70bd9e55ab78a8a88bf6dc
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+
+PODFILE CHECKSUM: 4c438addb11b6da45ed7ae408823d68256222460
+
+COCOAPODS: 1.16.2
