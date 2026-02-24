@@ -42,6 +42,15 @@ final class NativeAppBarView: NSObject, FlutterPlatformView {
         navBar.translatesAutoresizingMaskIntoConstraints = false
         navBar.isTranslucent = true
         navBar.prefersLargeTitles = false
+
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .clear
+        appearance.shadowColor = .clear
+
+        navBar.standardAppearance = appearance
+        navBar.scrollEdgeAppearance = appearance
+        navBar.compactAppearance = appearance
         
         let item = UINavigationItem(title: "")
         navBar.setItems([item], animated: false)
@@ -64,7 +73,7 @@ final class NativeAppBarView: NSObject, FlutterPlatformView {
         NSLayoutConstraint.activate([
             navBar.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
             navBar.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
-            navBar.topAnchor.constraint(equalTo: rootView.topAnchor),
+            navBar.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor),
             navBar.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
         ])
     }

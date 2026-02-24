@@ -43,9 +43,15 @@ final class NativeTabBarView: NSObject, FlutterPlatformView {
     }
     
     private func embedController() {
-        tabBarController.view.frame = rootView.bounds
-        tabBarController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tabBarController.view.translatesAutoresizingMaskIntoConstraints = false
         rootView.addSubview(tabBarController.view)
+
+        NSLayoutConstraint.activate([
+            tabBarController.view.topAnchor.constraint(equalTo: rootView.topAnchor),
+            tabBarController.view.leadingAnchor.constraint(equalTo: rootView.leadingAnchor),
+            tabBarController.view.trailingAnchor.constraint(equalTo: rootView.trailingAnchor),
+            tabBarController.view.bottomAnchor.constraint(equalTo: rootView.bottomAnchor)
+        ])
     }
     
     private func bindChannel() {
