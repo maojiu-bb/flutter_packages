@@ -36,6 +36,7 @@ class NativeActionSheetView: NSObject, FlutterPlugin {
             
             guard let args = call.arguments as? [String: Any],
                   let title = args["title"] as? String,
+                  let cancelText = args["cancelText"] as? String,
                   let cells = args["cells"] as? [[String: Any]]
             else {
                 result(FlutterError(code: "ARGUEMENTS_ERROR", message: "arguement error", details: nil))
@@ -68,7 +69,7 @@ class NativeActionSheetView: NSObject, FlutterPlugin {
             }
             
             let cancelAction = UIAlertAction(
-                title: "Cancel",
+                title: cancelText ?? "Cancel",
                 style: .cancel
             ) { _ in
                 result(nil)

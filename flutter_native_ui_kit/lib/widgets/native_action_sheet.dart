@@ -21,6 +21,7 @@ class NativeActionSheet {
   static Future<void> show({
     required String title,
     String? message,
+    String? cancelText,
     required List<ActionSheetCell> cells,
     required Function(ActionSheetCell?) onResult,
   }) async {
@@ -28,6 +29,7 @@ class NativeActionSheet {
         await _channel.invokeMethod<String>(MethodName.NATIVE_ACTION_SHEET, {
       "title": title,
       "message": message,
+      "cancelText": cancelText,
       "cells": cells
           .map((cell) => {
                 "label": cell.label,
